@@ -2,10 +2,12 @@ import {ExecutorOptionType} from '@layerzerolabs/lz-v2-utilities';
 import {OAppEnforcedOption, OmniPointHardhat} from '@layerzerolabs/toolbox-hardhat';
 import {EndpointId} from '@layerzerolabs/lz-definitions';
 import {generateConnectionsConfig} from '@layerzerolabs/metadata-tools';
+import { ethers } from "hardhat";
 
 export const sepoliaContract: OmniPointHardhat = {
   eid: EndpointId.SEPOLIA_V2_TESTNET,
-  contractName: 'MyOFT',
+  address: ethers.utils.hexZeroPad("0xfcdcd0124eec9134eb0a5050608e6bbd34dfdab3", 32),
+  // contractName: 'MyOFT',
 };
 
 export const solanaContract: OmniPointHardhat = {

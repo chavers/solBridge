@@ -138,8 +138,7 @@ task(TASK_LZ_OAPP_WIRE)
                                     new PublicKey(connection.config.sendLibrary),
                                     new PublicKey(solanaDeployment.oftStore)
                                 )
-
-                                if (sendConfig == null) {
+                                 if (sendConfig == null) {
                                     DebugLogger.printErrorAndFixSuggestion(
                                         KnownErrors.ULN_INIT_CONFIG_SKIPPED,
                                         `SendConfig on ${connection.vector.from.eid} not initialized for remote ${connection.vector.to.eid}.`

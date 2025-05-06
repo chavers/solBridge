@@ -9,11 +9,11 @@ import {
 } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID, createInitializeMintInstruction, getMintLen } from "@solana/spl-token";
 import { getKeypairFromFile, getExplorerLink } from "@solana-developers/helpers";
-// import { OFT_DECIMALS } from "@layerzerolabs/oft-v2-solana-sdk";
-import { OftTools, OFT_SEED } from "@layerzerolabs/lz-solana-sdk-v2";
+import { OFT_DECIMALS } from "@layerzerolabs/oft-v2-solana-sdk";
+import { OftTools, OFT_SEED, getProgramKeypair  } from "@layerzerolabs/lz-solana-sdk-v2";
 import { addressToBytes32 } from "@layerzerolabs/lz-v2-utilities";
 import * as addr from "../deployments/solana-testnet/OFT.json";
-
+import * as lzSol from "@layerzerolabs/lz-solana-sdk-v2";
 const CHAIN = "devnet";
 
 const main = async () => {
@@ -29,7 +29,7 @@ const main = async () => {
   const Escrow = new web3.PublicKey(addr.escrow);
   const OFT_SEED = "OFT";
   //
-  const peers = [{ dstEid: 40161, peerAddress: addressToBytes32("SEPOLIA_OFT_ADDRESS") }];
+  const peers = [{ dstEid: 40161, peerAddress: addressToBytes32("0xfcdcd0124eec9134eb0a5050608e6bbd34dfdab3") }];
 
   //
   // 1. initializeMintInstruction
@@ -90,7 +90,7 @@ const main = async () => {
     // 3.1. createInitNonceIx
     //
     const initNonceIxTx = new Transaction().add(
-      await OftTools.createInitNonceIx(
+      await  OftTools.createInitNonceIx(
         userKp.publicKey, // Wallet public key
         peer.dstEid, // Destination Endpoint ID (dstEid)
         oftConfig, // Derived OFT Config PDA
